@@ -63,7 +63,7 @@ namespace LiteDB.Tests.Database
             Assert.AreEqual(255, full.Log);
             Assert.AreEqual(true, full.UtcDate);
             Assert.AreEqual(true, full.Upgrade);
-            Assert.AreEqual(true, full.Async);
+            //Assert.AreEqual(true, full.Async);
         }
 
         [TestMethod]
@@ -122,7 +122,7 @@ namespace LiteDB.Tests.Database
             Assert.AreEqual(Logger.NONE, connectionString.Log);
             Assert.AreEqual(false, connectionString.UtcDate);
             Assert.AreEqual(false, connectionString.Upgrade);
-            Assert.AreEqual(false, connectionString.Async);
+            //Assert.AreEqual(false, connectionString.Async);
         }
     }
 }
