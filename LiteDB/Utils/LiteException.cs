@@ -105,7 +105,7 @@ namespace LiteDB
 
         internal static LiteException IndexDuplicateKey(string field, BsonValue key)
         {
-            return new LiteException(INDEX_DUPLICATE_KEY, "Cannot insert duplicate key in unique index '{0}'. The duplicate value is '{1}'.", field, key);
+            return new LiteException(INDEX_DUPLICATE_KEY, "Cannot insert duplicate key in unique index '{0}'. The duplicate value is '{1}'.", field, key.RawValue.ToString());
         }
 
         internal static LiteException IndexKeyTooLong()
