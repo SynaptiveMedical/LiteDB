@@ -63,7 +63,9 @@ namespace LiteDB.Tests.Database
             Assert.AreEqual(255, full.Log);
             Assert.AreEqual(true, full.UtcDate);
             Assert.AreEqual(true, full.Upgrade);
-            //Assert.AreEqual(true, full.Async);
+#if HAVE_SYNC_OVER_ASYNC
+            Assert.AreEqual(true, full.Async);
+#endif
         }
 
         [TestMethod]
@@ -95,9 +97,13 @@ namespace LiteDB.Tests.Database
                 "LimitSize",
                 "Log",
                 "UtcDate",
-                "Upgrade",
-                "Async",
-                "Flush"
+                "Upgrade"
+#if HAVE_SYNC_OVER_ASYNC
+                ,"Async"
+#endif
+#if HAVE_FLUSH_DISK
+                ,"Flush"
+#endif
             };
 
             var actualProperties = new HashSet<string>(typeof(ConnectionString).GetProperties().Select(p => p.Name));
@@ -122,7 +128,9 @@ namespace LiteDB.Tests.Database
             Assert.AreEqual(Logger.NONE, connectionString.Log);
             Assert.AreEqual(false, connectionString.UtcDate);
             Assert.AreEqual(false, connectionString.Upgrade);
-            //Assert.AreEqual(false, connectionString.Async);
+#if HAVE_SYNC_OVER_ASYNC
+            Assert.AreEqual(false, connectionString.Async);
+#endif
         }
     }
 }
